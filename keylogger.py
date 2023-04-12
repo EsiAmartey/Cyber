@@ -9,7 +9,7 @@ def keyPressed(key):
 		except:
 			print("Error getting char")
 
-if __name__ == "__main__";
+if __name__== "__main__":
 	listener = keyboard.listener(on_press=keyPressed)
 	listener.start()
 	input()
