@@ -10,6 +10,6 @@ def keyPressed(key):
 			print("Error getting char")
 
 if __name__== "__main__":
-	listener = keyboard.listener(on_press=keyPressed)
+	listener = keyboard.Listener(on_press=keyPressed)
 	listener.start()
 	input()
