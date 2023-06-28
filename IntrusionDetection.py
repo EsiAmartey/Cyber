@@ -1,4 +1,5 @@
 import re
+import pyshark
 
 def analyze_packet(packet):
     # Perform analysis on the packet
@@ -16,19 +17,15 @@ def generate_alert(packet):
 
 def monitor_traffic():
     # Monitor network traffic for suspicious activities
-    # Replace this with your actual network monitoring code or library
+    # Use PyShark to capture live network packets from the network interface
+    capture = pyshark.LiveCapture(interface='eth0')
 
-    # For demonstration purposes, we simulate packets with a list
-    packets = [
-        "normal_packet",
-        "malicious_code",
-        "normal_packet",
-        "normal_packet"
-    ]
+    for packet in capture.sniff_continuously():
+        # Extract the packet payload
+        payload = packet.payload
 
-    for packet in packets:
-        if analyze_packet(packet):
-            generate_alert(packet)
+        if analyze_packet(payload):
+            generate_alert(payload)
 
 # Start monitoring the network traffic
 monitor_traffic()
